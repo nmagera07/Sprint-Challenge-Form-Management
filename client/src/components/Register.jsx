@@ -9,9 +9,12 @@ import { useLocalStorage } from './UseLocalStorage'
 const Register = ({ touched, errors}) => {
     const [storedValue, setStoredValue] = useLocalStorage('storedValue')
 
-    if (storedValue) {
-        return <Redirect to="/protected" />;
-    }
+    useEffect(() => {
+       if (storedValue) {
+        return <Redirect to="/login" />;
+    } 
+    },[storedValue])
+   
 
     return ( 
         <div>
@@ -36,6 +39,16 @@ const Register = ({ touched, errors}) => {
                     />
                 </div>
                 <p>{touched.password && errors.password}</p>
+                {/* <div className="form-group">
+                    <label className="label">Password</label>
+                    <Field
+                    className="input"
+                    name="second-password"
+                    type="password"
+                    autoComplete="off"
+                    />
+                </div>
+                <p>{touched.password && errors.password}</p> */}
                 <button className="btn" type="submit">Submit &rarr;</button>
                 </Form>
         </div>
@@ -43,10 +56,10 @@ const Register = ({ touched, errors}) => {
     }
  
 export default withFormik({
-  mapPropsToValues() {
+  mapPropsToValues(username, password) {
     return {
       username: "",
-      password: ""
+      password: password || "",
     };
   },
   validationSchema: Yup.object().shape({
@@ -54,7 +67,10 @@ export default withFormik({
       .required('Please enter a username'),
     password: Yup.string()
       .min(6)
-      .required('Password is required')
+      .required('Password is required'),
+    // passwordConfirmation: Yup.string()
+    //   .oneOf([Yup.ref('password'), null])
+    //   .required('Passwords must match')
   }),
   handleSubmit(values, formikBag) {
     const url = "http://localhost:5000/api/register";

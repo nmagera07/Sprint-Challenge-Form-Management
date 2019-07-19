@@ -15,7 +15,7 @@ function App() {
       <Link to="/protected">Protected</Link>
       </div>
       <Route path="/login" component={Register} />
-      <Route path="/protected" component={ProtectedPage} />
+      <Route exact path="/protected" component={ProtectedPage} />
       </Router>
     </div>
   );

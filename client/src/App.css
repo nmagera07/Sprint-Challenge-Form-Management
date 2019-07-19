@@ -49,4 +49,6 @@
   display: flex;
   justify-content: space-evenly;
   flex-flow: wrap;
+  width: 50%;
+  margin: 0 auto;
 }

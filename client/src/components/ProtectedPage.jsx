@@ -23,7 +23,7 @@ const ProtectedPage = () => {
             {data.map(item => {
                return <Card>
                    {/* <Image src="https://prods3.imgix.net/images/articles/2016_06/Feature-Brisket-Big-Dish-Photo-Devon-Knight.jpg" /> */}
-                    <img src={item.image} alt="food" />
+                    {/* <img src={item.image} alt="food" /> */}
                     <p>Course Name: {item.name}</p>
                     <p>Course Type: {item.course}</p>
                     <p>Technique: {item.technique}</p>

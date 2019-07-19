@@ -31,3 +31,22 @@
     transform: rotate(360deg);
   }
 }
+
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  height: 70px;
+  background: gray;
+  align-items: center;
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.items {
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: wrap;
+}
